@@ -693,7 +693,16 @@
 
     // Export the resume as PDF using the browser's print feature.
     function exportResume() {
-      window.print();
+      // window.print();
+      // Hide everything except the resume container
+      const originalBody = document.body.innerHTML;
+      const resumeContent = document.getElementById("resume-container").innerHTML;
+
+      document.body.innerHTML = resumeContent; // Set only the resume container for print
+      window.print(); // Trigger print
+
+      document.body.innerHTML = originalBody; // Restore original content after print
+      window.location.reload(); // Refresh to prevent UI inconsistencies
     }
   </script>
 </body>
