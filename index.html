@@ -153,9 +153,37 @@
       color: #555;
     }
     /* Hide menu and other action buttons when printing */
+    /* PRINT SPECIFIC STYLES */
     @media print {
-      body * { visibility: hidden; }
-      #resume-container, #resume-container * { visibility: visible; }
+        /* Hide all unnecessary elements */
+        body * {
+            visibility: hidden;
+        }
+        #resume-container, #resume-container * {
+            visibility: visible;
+        }
+
+        /* Remove unwanted auto-generated elements */
+        [role="presentation"], [aria-label], [data-label],
+        [class*="store"], [class*="account"] {
+            display: none !important;
+        }
+
+        /* Hide Font Awesome icons if interfering */
+        .fa, [class*="fas"], [class*="fab"] {
+            display: none !important;
+        }
+
+        /* Ensure spacing is preserved */
+        .section {
+            page-break-before: auto;
+            page-break-after: auto;
+        }
+
+        /* Hide menu and actions while printing */
+        .menu, .action-btn {
+            display: none !important;
+        }
     }
     /* Custom Styles for Certifications, Education, Experience (unchanged) */
     .certifications .remove-item,
@@ -446,6 +474,11 @@
   </div>
 
   <script>
+
+    window.addEventListener('beforeprint', function() {
+        document.querySelectorAll('[class*="store"], [class*="account"]').forEach(el => el.remove());
+    });
+
     // Toggle editing for header (name) and contact info.
     document.addEventListener("DOMContentLoaded", function() {
       var header = document.getElementById("resume-name");
