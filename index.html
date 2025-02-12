@@ -154,17 +154,9 @@
     }
     /* Hide menu and other action buttons when printing */
     @media print {
-      /* Force printing ONLY resume container */
-      body * { visibility: hidden; }
-      #resume-container, #resume-container * { visibility: visible !important; }
-
-      /* Remove any injected autofill elements */
-      [role="presentation"], [aria-label], [data-label],
-      [class*="store"], [class*="account"], input, form, button {
-          display: none !important;
-      }
-      hr, div[role="separator"], div[aria-hidden="true"] {
-          display: none !important;
+      .menu,
+      .action-btn {
+        display: none !important;
       }
     }
     /* Custom Styles for Certifications, Education, Experience (unchanged) */
@@ -457,20 +449,13 @@
 
   <script>
     // Toggle editing for header (name) and contact info.
-    document.addEventListener("DOMContentLoaded", function() {
-      var header = document.getElementById("resume-name");
-      header.addEventListener("click", function() {
-          toggleHeaderEdit(iconElement);
-      });
-    });
-
     function toggleHeaderEdit(iconElement) {
       // Verify element existence
       var nameEl = document.getElementById("resume-name");
       if (nameEl === null) {
         console.error('Element "resume-name" not found');
         return;
-      }      
+      }
     
       var currentState = nameEl.getAttribute("contenteditable");
       var newState = currentState === "true" ? "false" : "true";
