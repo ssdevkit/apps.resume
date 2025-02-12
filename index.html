@@ -8,151 +8,41 @@
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <style>
-    /* Base Styles */
+    /* EXISTING BASE STYLES */
     body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      margin: 20px;
-      font-size: 14px;
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 20px;
+        font-size: 14px;
     }
     h1, h2, h3 {
-      color: #333;
+        color: #333;
     }
     .section {
-      margin-bottom: 20px;
+        margin-bottom: 20px;
     }
     .section h2 {
-      border-bottom: 2px solid #333;
-      padding-bottom: 5px;
-      display: flex;
-      align-items: center;
+        border-bottom: 2px solid #333;
+        padding-bottom: 5px;
+        display: flex;
+        align-items: center;
     }
-    /* Contact Info */
-    .contact-info {
-      line-height: 1;
+    .menu {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 20px;
     }
-    .contact-info a {
-      color: #0073e6;
-      text-decoration: none;
+    .menu li {
+        cursor: pointer;
+        padding: 10px 20px;
+        background-color: #f0f0f0;
+        border-radius: 4px;
     }
-    .contact-info a:hover {
-      text-decoration: underline;
+    .menu li:hover {
+        background-color: #e0e0e0;
     }
-    .contact-info i {
-      margin-right: 10px;
-      color: #333;
-    }
-    /* Summary Section */
-    .summary {
-      text-align: justify;
-    }
-    .summary-edit-icon {
-      cursor: pointer;
-      color: #888;
-      margin-left: 10px;
-      font-size: 0.8em;
-    }
-    .summary-edit-mode {
-      border: 1px solid #ccc;
-      padding: 10px;
-    }
-    /* Experience Section */
-    .experience-item {
-      margin: -10px 0 10px 0;
-      border-bottom: 1px solid #ffffff;
-      padding-bottom: -5px;
-    }
-    .experience-edit-mode {
-      border: 0;
-      padding: 0;
-      border-radius: 0;
-    }
-    .experience-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin: 0px 0 -10px 0;
-    }
-    .experience .experience-header .remove-item {
-      position: static;
-      margin-left: 10px;
-    }
-    .experience p {
-      margin: -5px 0;
-    }
-    /* Education & Certifications */
-    .education-item,
-    .certification-item {
-      margin-bottom: 10px;
-      position: relative;
-      padding-right: 25px;
-    }
-    .remove-item {
-      position: absolute;
-      right: 0;
-      top: 0;
-      cursor: pointer;
-      color: #888;
-      font-size: 0.9em;
-    }
-    .remove-item:hover {
-      color: #555;
-    }
-    /* Skills Section Styles */
-    .skills ul {
-      list-style-type: none;
-      padding: 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .skills ul li {
-      display: inline-block;
-      background: #f4f4f4;
-      padding: 5px 10px;
-      border-radius: 15px;
-      font-size: 0.9em;
-      color: #333;
-      border: 1px solid #ddd;
-      position: relative;
-    }
-    .remove-skill {
-      position: absolute;
-      right: -10px;
-      top: -10px;
-      background: #ccc;
-      border-radius: 50%;
-      width: 18px;
-      height: 18px;
-      text-align: center;
-      line-height: 18px;
-      font-size: 0.8em;
-      cursor: pointer;
-      display: none;
-    }
-    .remove-skill:hover {
-      background: #aaa;
-    }
-    .skills.skills-edit-mode .remove-skill {
-      display: inline-block;
-    }
-    .skills .add-skill-btn {
-      display: none;
-    }
-    .skills.skills-edit-mode .add-skill-btn {
-      display: inline-block;
-    }
-    /* Edit Icon style */
-    .edit-icon {
-      cursor: pointer;
-      color: #888;
-      margin-left: 10px;
-      font-size: 0.8em;
-    }
-    .edit-icon:hover {
-      color: #555;
-    }
-    /* Hide menu and other action buttons when printing */
+
     /* PRINT SPECIFIC STYLES */
     @media print {
         /* Hide all unnecessary elements */
@@ -184,57 +74,6 @@
         .menu, .action-btn {
             display: none !important;
         }
-    }
-    /* Custom Styles for Certifications, Education, Experience (unchanged) */
-    .certifications .remove-item,
-    .certifications .add-btn {
-      display: none;
-    }
-    .certifications.certifications-edit-mode .remove-item,
-    .certifications.certifications-edit-mode .add-btn {
-      display: inline-block;
-    }
-    .education .remove-item,
-    .education .add-btn {
-      display: none;
-    }
-    .education.education-edit-mode .remove-item,
-    .education.education-edit-mode .add-btn {
-      display: inline-block;
-    }
-    .experience .remove-item,
-    .experience .add-btn {
-      display: none;
-    }
-    .experience.experience-edit-mode .remove-item,
-    .experience.experience-edit-mode .add-btn {
-      display: inline-block;
-    }
-    /* Minimalistic Menu Styles */
-    .menu {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-bottom: 20px;
-      padding: 0;
-    }
-    .menu ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      gap: 20px;
-    }
-    .menu li {
-      cursor: pointer;
-      padding: 10px 20px;
-      background-color: #f0f0f0;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      transition: background-color 0.3s ease;
-    }
-    .menu li:hover {
-      background-color: #e0e0e0;
     }
   </style>
 </head>
