@@ -154,9 +154,14 @@
     }
     /* Hide menu and other action buttons when printing */
     @media print {
-      .menu,
-      .action-btn {
-        display: none !important;
+      /* Force printing ONLY resume container */
+      body * { visibility: hidden; }
+      #resume-container, #resume-container * { visibility: visible !important; }
+
+      /* Remove any injected autofill elements */
+      [role="presentation"], [aria-label], [data-label],
+      [class*="store"], [class*="account"], input, form, button {
+          display: none !important;
       }
     }
     /* Custom Styles for Certifications, Education, Experience (unchanged) */
