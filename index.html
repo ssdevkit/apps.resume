@@ -449,13 +449,24 @@
 
   <script>
     // Toggle editing for header (name) and contact info.
+    document.addEventListener("DOMContentLoaded", function() {
+      var header = document.getElementById("resume-name");
+      header.addEventListener("click", function() {
+          toggleHeaderEdit(iconElement);
+      });
+    });
+
+    function toggleHeaderEdit(iconElement) {
+        // Your existing toggleHeaderEdit function code
+    }
+
     function toggleHeaderEdit(iconElement) {
       // Verify element existence
       var nameEl = document.getElementById("resume-name");
       if (nameEl === null) {
         console.error('Element "resume-name" not found');
         return;
-      }
+      }      
     
       var currentState = nameEl.getAttribute("contenteditable");
       var newState = currentState === "true" ? "false" : "true";
