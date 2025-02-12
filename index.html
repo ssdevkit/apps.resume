@@ -154,10 +154,8 @@
     }
     /* Hide menu and other action buttons when printing */
     @media print {
-      .menu,
-      .action-btn {
-        display: none !important;
-      }
+      body * { visibility: hidden; }
+      #resume-container, #resume-container * { visibility: visible; }
     }
     /* Custom Styles for Certifications, Education, Experience (unchanged) */
     .certifications .remove-item,
