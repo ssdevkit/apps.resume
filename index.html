@@ -184,6 +184,15 @@
     .experience.experience-edit-mode .add-btn {
       display: inline-block;
     }
+    .skills-edit-icon {
+      cursor: pointer;
+      color: #888;
+      margin-left: 10px;
+      font-size: 0.8em;
+    }
+    .skills-edit-icon:hover {
+      color: #555;
+    }
     /* Minimalistic Menu Styles */
     .menu {
       display: flex;
@@ -576,6 +585,13 @@
     function toggleSkillsEdit(iconElement) {
       var skillsSection = document.querySelector(".skills");
       skillsSection.classList.toggle("skills-edit-mode");
+      const isEditMode = skillsSection.classList.toggle('skills-edit-mode');
+      const skillItems = skillsSection.querySelectorAll('li');
+      skillItems.forEach(item => {
+        item.contentEditable = isEditMode;
+      });
+      button.textContent = isEditMode ? 'Save Skills' : 'Edit Skills';
+      
       if (iconElement.classList.contains("fa-pencil")) {
         iconElement.classList.remove("fa-pencil", "fa-sm");
         iconElement.classList.add("fa-check");
