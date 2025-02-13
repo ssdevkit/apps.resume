@@ -184,15 +184,6 @@
     .experience.experience-edit-mode .add-btn {
       display: inline-block;
     }
-    .skills-edit-icon {
-      cursor: pointer;
-      color: #888;
-      margin-left: 10px;
-      font-size: 0.8em;
-    }
-    .skills-edit-icon:hover {
-      color: #555;
-    }
     /* Minimalistic Menu Styles */
     .menu {
       display: flex;
@@ -510,14 +501,6 @@
       }
     }
 
-    // Generic function to remove an item.
-    function removeItem(iconElement, selector) {
-      var item = iconElement.closest(selector);
-      if (item) {
-        item.remove();
-      }
-    }
-
     // Toggle editing for Experience section.
     function toggleExperienceEdit(iconElement) {
       var expSection = iconElement.closest('.experience');
@@ -585,13 +568,6 @@
     function toggleSkillsEdit(iconElement) {
       var skillsSection = document.querySelector(".skills");
       skillsSection.classList.toggle("skills-edit-mode");
-      const isEditMode = skillsSection.classList.toggle('skills-edit-mode');
-      const skillItems = skillsSection.querySelectorAll('li');
-      skillItems.forEach(item => {
-        item.contentEditable = isEditMode;
-      });
-      button.textContent = isEditMode ? 'Save Skills' : 'Edit Skills';
-      
       if (iconElement.classList.contains("fa-pencil")) {
         iconElement.classList.remove("fa-pencil", "fa-sm");
         iconElement.classList.add("fa-check");
@@ -649,21 +625,13 @@
         </span>
       `;
       certList.appendChild(newCert);
-    }
-
-    // Remove a skill.
-    function removeSkill(spanEl) {
-      var skillItem = spanEl.closest("li");
-      if (skillItem) {
-        skillItem.remove();
-      }
-    }
+    }    
 
     // Add a new skill.
     function addSkill() {
       var skillsList = document.getElementById("skills-list");
       var newSkill = document.createElement("li");
-      newSkill.setAttribute("contenteditable", "false");
+      newSkill.setAttribute("contenteditable", "true");
       newSkill.style.position = "relative";
       newSkill.innerText = "New Skill";
       var removeSpan = document.createElement("span");
@@ -673,6 +641,22 @@
       newSkill.appendChild(removeSpan);
       skillsList.appendChild(newSkill);
     }
+
+    // Remove a skill.
+    function removeSkill(spanEl) {
+        var skillItem = spanEl.closest("li");
+        if (skillItem) {
+          skillItem.remove();
+        }
+    }
+
+    // Helper function to remove an item.
+    function removeItem(iconElement, selector) {
+        var item = iconElement.closest(selector);
+        if (item) {
+          item.remove();
+        }
+      }    
 
     // Save the resume to localStorage.
     function saveResume() {
